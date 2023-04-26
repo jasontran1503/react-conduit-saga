@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ApiStatus, User } from 'shared/data-access/common/configs/appModels';
 import { RootState } from '../common/configs/store';
+import { setToken } from '../common/logic/token';
 
 export interface AuthState {
   user: User | null;
@@ -39,6 +40,7 @@ const authSlice = createSlice({
     },
     logout: (state) => {
       localStorage.removeItem('api_token');
+      setToken(null);
       state.isAuthenticated = false;
       state.user = null;
     }

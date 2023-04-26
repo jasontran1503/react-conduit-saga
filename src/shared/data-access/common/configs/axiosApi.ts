@@ -17,7 +17,8 @@ axiosApi.interceptors.response.use(
       case 401:
         history.push('/login');
         break;
-      case 500:
+      case 404:
+        history.push('/404');
         break;
     }
     return Promise.reject(error.response.data);
